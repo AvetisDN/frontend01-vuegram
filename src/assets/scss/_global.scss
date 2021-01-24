@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+$primary: #cf4a86;
+$success: #088d55;
+$error: #a13125;
+$warning: #ce590c;
+$white: #fff;
+$light: #f1f3f7;
+$medium: #789;
+$dark: #345;
+
+body {
+    margin: 0;
+    color: $dark;
+    background-color: $light;
+    font-size: 16px;
+}
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+    box-sizing: border-box;
+    &:focus {
+        outline: none;
+    }
+}
+
+h1,h2,h3,h4,h5,h6,p {
+    margin: 0 0 .5rem;
+}
+h1 {
+    font-size: 2rem;
+}
+h2 {
+    font-size: 1.8rem;
+}
+h3 {
+    font-size: 1.6rem;
+}
+h4 {
+    font-size: 1.4rem;
+}
+h5 {
+    font-size: 1.2rem;
+}
+h6 {
+    font-size: 1rem;
+}
+
+p {
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: $primary;
+    transition: .2s ease;
+    &:hover {
+        color: lighten($primary, 7%);
+    }
+}
+
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    @media screen and (max-width: 768px) {
+        display: block;
+    }
+}
+.col1, .col2 {
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 1rem;
+    @media screen and (max-width: 768px) {}
+}
+
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($dark, .6);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+        background-color: $light;
+        width: 150px;
+        text-align: center;
+        padding: 1rem;
+        border-radius: 5px;
+        box-shadow: rgba($dark, .6) 0 0 20px;
+    }
+}
+
+.error-msg {
+    margin-top: 1rem;
+    text-align: center;
+    p {
+        color: $error;
+        margin: 0;
+    }
+}
+
+.button {
+    background-color: $primary;
+    bottom: 0;
+    outline: 0;
+    color: $white;
+    padding: .76rem 1.25rem;
+    min-width: 150px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .25s ease;
+    border: 0;
+    margin-bottom: 1rem;
+    &:hover {
+        background-color: lighten($primary, 7%);
+        color: $white;
+    }
+    &:disabled {
+        opacity: .5;
+        &:hover {
+            background-color: $primary;
+        }
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+.inline {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+
+form {
+    label {
+        display: block;
+        font-size: 1rem;
+        margin-bottom: .5rem;
+    }
+    input, textarea {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        padding: .5rem .8rem;
+        outline: 0;
+        border: 1px solid darken($light,10%);
+        border-radius: 5px;
+        &:focus {
+            border: 1px solid $medium;
+        }
+    }
+    textarea {
+        resize: none;
+        height: 6em;
+        line-height: 1.2em;
+    }
+}
+
+.fade-enter-active {
+    transition: opacity .5s ease;
+}
+.fade-leave-active {
+    transition: opacity 0s;
+}
+.fade-enter, .fade-enter-to {
+    opacity: 0;
+}
