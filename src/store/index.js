@@ -118,6 +118,25 @@ const store = new Vuex.Store({
         this.commit('setErrorGlobal', err.message)
       }
       
+    },
+    async updateProfile({dispatch}, user) {
+      const userId = fb.auth.currentUser.uid
+      await fb.usersCollection.doc(userId).update({
+        name: user.name
+      })
+      dispatch('fetchUserProfile', {uid: userId})
+      const posts = await fb.postsCollection.where('userId', '==', userId).get()
+      posts.forEach(post => {
+        fb.postsCollection.doc(post.id).update({
+          userName: user.name
+        })
+      })
+      const comments = await fb.commentsCollection.where('userId', '==', userId).get()
+      comments.forEach(comment => {
+        fb.commentsCollection.doc(comment.id).update({
+          userName: user.name
+        })
+      })
     }
   },
   modules: {
